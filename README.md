@@ -1,4 +1,4 @@
-[ssl双向认证](https://github.com/vencc/vencc.github.io/ssl.md)
+[ssl双向认证](https://github.com/vencc/vencc.github.io/blob/master/ssl.md)
 
 ## Welcome to GitHub Pages
 
