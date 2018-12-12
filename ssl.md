@@ -79,23 +79,23 @@ keytool -import -v -alias smcc -file cChat.crt -keypass sNetty -storepass sNetty
 
 ### 证书制作过程中可能遇到的错误
 
-> /etc/pki/CA/index.txt: No such file or directory 
-> unable to open '/etc/pki/CA/index.txt' 
+> /etc/pki/CA/index.txt: No such file or directory   
+> unable to open '/etc/pki/CA/index.txt'    
 
 touch /etc/pki/CA/index.txt 
 
-> /etc/pki/CA/serial: No such file or directory 
-> error while loading serial number 
+> /etc/pki/CA/serial: No such file or directory    
+> error while loading serial number    
 
 echo 00 > /etc/pki/CA/serial
 
 > The mandatory countryName field was missing
 
-vim /etc/pki/tls/openssl.cnf 
+vim /etc/pki/tls/openssl.cnf   
 将   policy          = policy_match   改为  policy          = policy_anything
 
-> failed to update database
-> TXT_DB error number 2
+> failed to update database   
+> TXT_DB error number 2   
 
 rm /etc/pki/CA/index.txt
 touch /etc/pki/CA/index.txt
