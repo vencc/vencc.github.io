@@ -13,4 +13,4 @@ autorefresh=1
 type=rpm-md
 ```  
 执行安装命令 sudo yum install --enablerepo=elasticsearch elasticsearch  
-启动命令 systemctl start elasticsearch   
+启动命令 systemctl start elasticsearch.service   
