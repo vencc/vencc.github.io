@@ -14,6 +14,12 @@ autorefresh=1
 type=rpm-md
 ```  
 执行安装命令 sudo yum install --enablerepo=elasticsearch elasticsearch  
+
+设置账号密码
+编辑 /etc/elasticsearch/elasticsearch.yml
+```
+```
+
 不能使用 root 启动 elasticsearch 
 ```
 addgroup es
@@ -22,6 +28,7 @@ passwd es
 
 chown -R es:es /etc/elasticsearch (根据报错给文件夹授权)
 su es
+./usr/share/elasticsearch/bin/elasticsearch -d
 ```
 
 # CentOS 安装 kibana 7.16.0  
