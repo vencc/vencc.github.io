@@ -1,4 +1,5 @@
 CentOS 安装 elaticsearch  
+[官方文档](https://www.elastic.co/guide/en/elasticsearch/reference/7.16/rpm.html#rpm-repo)  
 在 /etc/yum.repos.d/ 下创建配置文件 elasticsearch.repo  
 填写以下内容：  
 ```  
