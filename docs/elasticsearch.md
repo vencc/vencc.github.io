@@ -1,5 +1,6 @@
-CentOS 安装 elaticsearch
-创建 /etc/yum.repos.d/elasticsearch.repo
+CentOS 安装 elaticsearch  
+在 /etc/yum.repos.d/ 下创建配置文件 elasticsearch.repo  
+填写以下内容：  
 ```  
 [elasticsearch]
 name=Elasticsearch repository for 7.x packages
@@ -10,4 +11,5 @@ enabled=0
 autorefresh=1
 type=rpm-md
 ```  
-sudo yum install --enablerepo=elasticsearch elasticsearch
+执行安装命令 sudo yum install --enablerepo=elasticsearch elasticsearch
+启动命令 systemctl start elasticsearch.service  
