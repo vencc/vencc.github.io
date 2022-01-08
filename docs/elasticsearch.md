@@ -15,9 +15,21 @@ type=rpm-md
 ```  
 执行安装命令 sudo yum install --enablerepo=elasticsearch elasticsearch  
 
-设置账号密码
+设置账号密码  
 编辑 /etc/elasticsearch/elasticsearch.yml
 ```
+cluster.name: qs
+node.name: master
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+# 本机ip地址（云服务器时不能使用localhost）
+network.host: 172.19.28.74
+discovery.seed_hosts: ["172.19.28.74"]
+http.port: 9200
+# 开启 elasticsearch 验证
+xpack.security.enabled: true
+xpack.security.transport.ssl.enabled: true
+xpack.license.self_generated.type: basic
 ```
 
 不能使用 root 启动 elasticsearch 
@@ -29,6 +41,41 @@ passwd es
 chown -R es:es /etc/elasticsearch (根据报错给文件夹授权)
 su es
 ./usr/share/elasticsearch/bin/elasticsearch -d
+```
+
+# elaticsearch 7.16.0 配置双实例
+停止 elasticsearch  
+在 /etc/elasticsearch 下创建文件夹 config1 和 config2  
+将 /etc/elasticsearch 下的文件 elasticsearch.yml、jvm.options、log4j2.properties 分别复制到新建的两个文件夹下  
+修改其中一个 elasticsearch.yml
+```
+cluster.name: qs
+node.name: test
+path.data: /var/lib/elasticsearch2
+path.logs: /var/log/elasticsearch2
+# 本机ip地址（云服务器时不能使用localhost）
+network.host: 172.19.28.74
+discovery.seed_hosts: ["172.19.28.74"]
+http.port: 9201
+# 开启 elasticsearch 验证
+xpack.security.enabled: true
+xpack.security.transport.ssl.enabled: true
+xpack.license.self_generated.type: basic
+```
+yum 安装的 elasticsearch 默认配置文件由 /usr/lib/systemd/system/elasticsearch.service 指定  
+启动第一个实例  
+```
+vim /usr/lib/systemd/system/elasticsearch.service
+Environment=ES_PATH_CONF=/etc/elasticsearch/config1
+vim /etc/sysconfig/elasticsearch
+ES_PATH_CONF=/etc/elasticsearch/config1
+```
+启动第二个实例
+```
+vim /usr/lib/systemd/system/elasticsearch.service
+Environment=ES_PATH_CONF=/etc/elasticsearch/config2
+vim /etc/sysconfig/elasticsearch
+ES_PATH_CONF=/etc/elasticsearch/config2
 ```
 
 # CentOS 安装 kibana 7.16.0  
