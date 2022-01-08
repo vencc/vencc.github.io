@@ -79,7 +79,7 @@ ES_PATH_CONF=/etc/elasticsearch/config2
 ```
 
 # CentOS 安装 kibana 7.16.0  
-[官方文档]（https://www.elastic.co/guide/en/kibana/current/rpm.html）  
+[官方文档](https://www.elastic.co/guide/en/kibana/current/rpm.html)  
 在 /etc/yum.repos.d/ 下创建配置文件 kibana.repo  
 填写以下内容：  
 ```
