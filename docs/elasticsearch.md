@@ -69,13 +69,17 @@ xpack.license.self_generated.type: basic
 ```
 为Elasticsearch集群创建一个证书颁发机构。
 ```
-bin/elasticsearch-certutil ca
+./bin/elasticsearch-certutil ca
 ```
 为集群中的每个节点生成证书和私钥
 ```
-bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12
+./bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12
 ```
 将 elastic-certificates.p12 拷贝到 config1/certs 和 config2/certs 目录下  
+```
+./bin/elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
+./bin/elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
+```
 yum 安装的 elasticsearch 默认配置文件由 /usr/lib/systemd/system/elasticsearch.service 指定  
 启动第一个实例  
 ```
