@@ -75,7 +75,7 @@ bin/elasticsearch-certutil ca
 ```
 bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12
 ```
-将 elastic-certificates.p12 拷贝到 config1/certs 和 config1/certs 目录下  
+将 elastic-certificates.p12 拷贝到 config1/certs 和 config2/certs 目录下  
 yum 安装的 elasticsearch 默认配置文件由 /usr/lib/systemd/system/elasticsearch.service 指定  
 启动第一个实例  
 ```
