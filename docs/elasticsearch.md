@@ -62,8 +62,20 @@ http.port: 9201
 # 开启 elasticsearch 验证
 xpack.security.enabled: true
 xpack.security.transport.ssl.enabled: true
+xpack.security.transport.ssl.verification_mode: certificate
+xpack.security.transport.ssl.keystore.path: certs/elastic-certificates.p12
+xpack.security.transport.ssl.truststore.path: certs/elastic-certificates.p12
 xpack.license.self_generated.type: basic
 ```
+为Elasticsearch集群创建一个证书颁发机构。
+```
+bin/elasticsearch-certutil ca
+```
+为集群中的每个节点生成证书和私钥
+```
+bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12
+```
+将 elastic-certificates.p12 拷贝到 elasticsearch 的每个节点下面config/certs目录下  
 yum 安装的 elasticsearch 默认配置文件由 /usr/lib/systemd/system/elasticsearch.service 指定  
 启动第一个实例  
 ```
