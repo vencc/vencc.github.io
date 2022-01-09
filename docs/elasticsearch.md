@@ -19,7 +19,6 @@ type=rpm-md
 编辑 /etc/elasticsearch/elasticsearch.yml
 ```
 cluster.name: qs
-node.max_local_storage_nodes: 2
 node.name: master
 path.data: /var/lib/elasticsearch
 path.logs: /var/log/elasticsearch
@@ -51,6 +50,7 @@ su es
 修改其中一个 elasticsearch.yml
 ```
 cluster.name: qs
+# 另一个文件也要添加
 node.max_local_storage_nodes: 2
 node.name: test
 path.data: /var/lib/elasticsearch2
