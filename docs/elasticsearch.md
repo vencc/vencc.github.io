@@ -31,7 +31,10 @@ xpack.security.enabled: true
 xpack.security.transport.ssl.enabled: true
 xpack.license.self_generated.type: basic
 ```
-
+手动设置密码
+```
+./bin/elasticsearch-setup-passwords interactive
+```
 不能使用 root 启动 elasticsearch 
 ```
 addgroup es
