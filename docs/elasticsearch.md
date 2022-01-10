@@ -45,7 +45,10 @@ chown -R es:es /etc/elasticsearch (根据报错给文件夹授权)
 su es
 ./usr/share/elasticsearch/bin/elasticsearch -d
 ```
-
+docker 启动
+```
+docker run -d -p 172.19.28.74:9201:9200 -p 172.19.28.74:9301:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.16.0
+```
 # elaticsearch 7.16.0 配置双实例
 停止 elasticsearch  
 在 /etc/elasticsearch 下创建文件夹 config1 和 config2  
