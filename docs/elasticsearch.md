@@ -45,9 +45,10 @@ chown -R es:es /etc/elasticsearch (根据报错给文件夹授权)
 su es
 ./usr/share/elasticsearch/bin/elasticsearch -d
 ```
-docker 启动
+docker 安装/启动
 ```
-docker run -d -p 172.19.28.74:9201:9200 -p 172.19.28.74:9301:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.16.0
+docker pull docker.elastic.co/elasticsearch/elasticsearch:7.16.0
+docker run -d -name es1 -p 172.19.28.74:9201:9200 -p 172.19.28.74:9301:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.16.0
 ```
 # elaticsearch 7.16.0 单机集群
 停止 elasticsearch  
