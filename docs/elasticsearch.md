@@ -43,7 +43,7 @@ passwd es
 
 chown -R es:es /etc/elasticsearch (根据报错给文件夹授权)
 su es
-./usr/share/elasticsearch/bin/elasticsearch -d
+/usr/share/elasticsearch/bin/elasticsearch -d
 ```
 docker 安装/启动
 ```
