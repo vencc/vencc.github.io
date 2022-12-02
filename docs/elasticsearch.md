@@ -9,6 +9,7 @@ docker run -d --name=es1 -p 172.19.28.74:9200:9200 -p 172.19.28.74:9300:9300 -e 
 ```
 
 开启https  
+
 1、生成文件  
 ```
 # 生成 CA
@@ -16,7 +17,8 @@ docker run -d --name=es1 -p 172.19.28.74:9200:9200 -p 172.19.28.74:9300:9300 -e 
 # 基于已有 CA 生成压缩包，里面有个elastic-certificates.p12 文件包含节点证书、节点密钥、CA证书
 ./bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12
 ```
-elasticsearch.yml
+
+2、修改elasticsearch.yml
 ```
 xpack.security.enabled: true
 xpack.security.transport.ssl.enabled: true
