@@ -4,8 +4,10 @@ elasticsearch 和 kibana 的版本要一致
 
 docker 安装/启动
 ```
+# hostname命名
+docker network create elastic
 docker pull docker.elastic.co/elasticsearch/elasticsearch:7.16.0
-docker run -d --name=es1 -p 172.19.28.74:9200:9200 -p 172.19.28.74:9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.16.0
+docker run -d --name=es1 --net elastic -p 172.19.28.74:9200:9200 -p 172.19.28.74:9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.16.0
 ```
 
 开启https  
@@ -26,11 +28,35 @@ xpack.security.transport.ssl.verification_mode: certificate
 xpack.security.transport.ssl.keystore.path: elastic-certificates.p12
 xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
 ```
+
+3、设置密码
+```
+./bin/elasticsearch-setup-passwords interactive
+```
 # CentOS 安装 kibana 7.16.0  
 [官方文档](https://www.elastic.co/guide/en/kibana/current/rpm.html)  
  
 docker 安装/启动
 ```
 docker pull docker.elastic.co/kibana/kibana:7.16.0
-docker run -d --name=kibana -p 172.19.28.74:5601:5601 docker.elastic.co/kibana/kibana:7.16.0
+docker run -d --name=kibana --net elastic -p 172.19.28.74:5601:5601 docker.elastic.co/kibana/kibana:7.16.0
+```
+
+连接elasticsearch https  
+
+1、生成文件
+```
+./bin/elasticsearch-certutil http
+```
+
+2、修改elasticsearch.yml
+```
+xpack.security.http.ssl.keystore.path: http.p12
+```
+
+3、修改kibana.yml
+```
+elasticsearch.ssl.certificateAuthorities: config/elasticsearch-ca.pem
+elasticsearch.username: 
+elasticsearch.password: 
 ```
