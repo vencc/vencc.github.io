@@ -1,6 +1,6 @@
 elasticsearch 和 kibana 的版本要一致
 # CentOS 安装 elaticsearch 8.1.2 
-[官方文档](https://www.elastic.co/guide/en/elasticsearch/reference/7.16/rpm.html#rpm-repo)  
+[官方文档](https://www.elastic.co/guide/en/elasticsearch/reference/8.1/rpm.html#rpm-repo)  
 
 docker 安装/启动
 ```
@@ -32,7 +32,7 @@ xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
 ./bin/elasticsearch-setup-passwords interactive
 ```
 # CentOS 安装 kibana 8.1.2  
-[官方文档](https://www.elastic.co/guide/en/kibana/current/rpm.html)  
+[官方文档](https://www.elastic.co/guide/en/kibana/8.1/rpm.html)  
  
 docker 安装/启动
 ```
