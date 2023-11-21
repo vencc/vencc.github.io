@@ -5,6 +5,9 @@ elasticsearch 和 kibana 的版本要一致
 docker 安装/启动
 ```
 docker pull elasticsearch:8.1.2
+# host 模式
+docker network create elastic
+# discovery.type=single-node 单节点模式运行
 docker run -d --name=es1 --net elastic -p 172.19.28.74:9200:9200 -p 172.19.28.74:9300:9300 -e "discovery.type=single-node" elasticsearch:8.1.2
 ```
 
