@@ -9,9 +9,11 @@ docker pull elasticsearch:8.1.2
 docker network create elastic
 # discovery.type=single-node 单节点模式运行
 docker run -d --name=es1 --net elastic -p 172.19.28.74:9200:9200 -p 172.19.28.74:9300:9300 -e "discovery.type=single-node" elasticsearch:8.1.2
+# 使用root用户（ID=0）登录
+docker exec -u 0 -it es1 /bin/bash
 ```
 
-开启https  
+开启https（单节点配置）  
 
 1、生成文件  
 ```
@@ -24,6 +26,8 @@ docker run -d --name=es1 --net elastic -p 172.19.28.74:9200:9200 -p 172.19.28.74
 2、修改elasticsearch.yml
 ```
 xpack.security.enabled: true
+xpack.security.http.ssl.keystore.path: elastic-certificates.p12
+xpack.security.http.ssl.truststore.path: elastic-certificates.p12
 xpack.security.transport.ssl.enabled: true
 xpack.security.transport.ssl.verification_mode: certificate
 xpack.security.transport.ssl.keystore.path: elastic-certificates.p12
@@ -32,6 +36,9 @@ xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
 
 3、设置密码
 ```
+# 添加生成证书时设置的密码，elasticsearch.yml 配置几个证书地址，就添加几个密码
+./bin/elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
+# 设置登录密码
 ./bin/elasticsearch-setup-passwords interactive
 ```
 # CentOS 安装 kibana 8.1.2  
