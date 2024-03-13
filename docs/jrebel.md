@@ -45,7 +45,9 @@ cd jrebel/bin
 ```
 ![image](https://github.com/vencc/vencc.github.io/assets/15951328/c9e5e714-840e-46cf-a31a-95ec4456088e)  
 设置密码(在jrebel根目录)  
-`java -jar jrebel.jar -set-remote-password <password># 例如，设置密码为 12341234java -jar jrebel.jar -set-remote-password 12341234`  
+```
+java -jar jrebel.jar -set-remote-password <password># 例如，设置密码为 12341234java -jar jrebel.jar -set-remote-password 12341234
+```  
 
 **重新打包项目**  
 勾选Jrebel远程热部署，其他依赖的module也要勾选  
@@ -65,8 +67,10 @@ password 服务器jrebel的密码
 
 重新打包项目  
 启动项目  
-`java -agentpath:/jrebel的根目录/lib/libjrebel64.so -Drebel.remoting_plugin=true -jar -agentlib:jd
-wp=transport=dt_socket,server=y,suspend=n,address=*:5005 qs-admin.jar`  
+```
+java -agentpath:/jrebel的根目录/lib/libjrebel64.so -Drebel.remoting_plugin=true -jar -agentlib:jd
+wp=transport=dt_socket,server=y,suspend=n,address=*:5005 qs-admin.jar
+```  
 
 debug即可  
 通过 Ctrl + Shift + F9 即可实现重新编译热部署。
