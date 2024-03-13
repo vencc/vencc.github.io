@@ -48,10 +48,10 @@ cd jrebel/bin
 `java -jar jrebel.jar -set-remote-password <password># 例如，设置密码为 12341234java -jar jrebel.jar -set-remote-password 12341234`  
 
 **重新打包项目**  
-勾选Jrebel远程热部署  
+勾选Jrebel远程热部署，其他依赖的module也要勾选  
 ![1710305652307](https://github.com/vencc/vencc.github.io/assets/15951328/b21bb598-3a7e-4021-a704-689d7fecb068)  
 生成`rebel.xml`和`rebel-remote.xml`文件  
-修改rebel-remote.xml文件，将依赖的其他module添加进来，否则其他module无法热部署  
+修改qs-admin下的rebel-remote.xml文件，将依赖的其他module添加进来，否则其他module无法热部署  
 ![image](https://github.com/vencc/vencc.github.io/assets/15951328/4e7f2972-b719-46a1-9ce6-c532be4cf3bf)
 
 设置远程连接  
