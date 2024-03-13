@@ -68,8 +68,7 @@ password 服务器jrebel的密码
 重新打包项目  
 启动项目  
 ```
-java -agentpath:/jrebel的根目录/lib/libjrebel64.so -Drebel.remoting_plugin=true -jar -agentlib:jd
-wp=transport=dt_socket,server=y,suspend=n,address=*:5005 qs-admin.jar
+java -agentpath:/jrebel的根目录/lib/libjrebel64.so -Drebel.remoting_plugin=true -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 qs-admin.jar
 ```  
 
 debug即可  
