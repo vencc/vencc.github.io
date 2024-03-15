@@ -263,3 +263,40 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
     }
 }
 ```
+aop切入动态切换数据库  
+```
+@Aspect
+@Component
+@Slf4j
+public class DynamicDataSourceAspect{
+    @Around("@annotation(targetDataSource)")
+    public Object around(ProceedingJoinPoint point, TargetDataSource targetDataSource) throws Throwable {
+        MethodSignature signature = (MethodSignature) point.getSignature();
+        Method method = signature.getMethod();
+        TargetDataSource ds = method.getAnnotation(TargetDataSource.class);
+        // 通过判断 DataSource 中的值来判断当前方法应用哪个数据源
+        DynamicDataSource.setDataSource(ds.value());
+        try {
+            return point.proceed();
+        } finally {
+            DynamicDataSource.clearDataSource();
+        }
+    }
+}
+```
+```
+@Documented
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface TargetDataSource {
+    String value() default DataSourceNames.qs; //默认数据库
+}
+```
+在impl上添加注解即可  
+```
+@Override
+@TargetDataSource(DataSourceNames.slave)
+public List<Customer> getAll() {
+    return customerMapper.selectAll();
+}
+```
