@@ -1,5 +1,6 @@
 **当前环境**  
-springboot3.2.0
+IntelliJ IDEA 2023.1  
+springboot3.2.0  
 jdk17.0.9
 
 # 数据源为不同数据库  
