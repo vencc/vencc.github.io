@@ -222,6 +222,7 @@ public class DataSourceConfig_qs {
      * @return
      */
     @Bean(name = "qsTransactionManager")
+    @Primary
     public DataSourceTransactionManager qsTransactionManager(@Qualifier("dynamicDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
