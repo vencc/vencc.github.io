@@ -8,6 +8,8 @@ vim /etc/my.cnf.d/mariadb-server.cnf
 [mysqld]
 log-bin=mysql-bin #二进制日志文件，master产生，slave使用进行复制操作。 
 server-id=1 #给数据库服务的唯一标识，一般为大家设置服务器Ip的末尾号
+# 指定同步数据库
+binlog_do_db=qs
 ```
 重启数据库  
 ```
