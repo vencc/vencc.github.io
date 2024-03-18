@@ -14,7 +14,7 @@ binlog_do_db=qs
 
 **在主库中创建用户，并设置该用户赋予复制权限**  
 ```
-create user 'sync'@'127.0.0.1' identified by password 'sync';
+create user 'sync'@'127.0.0.1' identified by 'sync';
 flush privileges;
 grant replication slave on qs.* to 'sync'@'127.0.0.1';
 flush privileges;
