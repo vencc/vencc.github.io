@@ -11,6 +11,15 @@ server-id=1 #给数据库服务的唯一标识，一般为大家设置服务器I
 # 指定同步数据库
 binlog_do_db=qs
 ```
+
+**在主库中创建用户，并设置该用户赋予复制权限**  
+```
+create user 'sync'@'127.0.0.1' identified by password 'sync';
+flush privileges;
+grant replication slave on qs.* to 'sync'@'127.0.0.1';
+flush privileges;
+```
+
 重启数据库  
 ```
 show master status;
