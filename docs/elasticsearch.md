@@ -67,4 +67,9 @@ xpack.security.http.ssl.keystore.path: http.p12
 elasticsearch.ssl.certificateAuthorities: config/elasticsearch-ca.pem
 elasticsearch.username: 
 elasticsearch.password: 
+```  
+# CentOS 安装 logstash 8.1.2  
+```
+docker pull docker.elastic.co/logstash/logstash:8.1.2
+docker run -d --name=logstash --net elastic -p 172.19.28.74:4560:4560 docker.elastic.co/logstash/logstash:8.1.2
 ```
