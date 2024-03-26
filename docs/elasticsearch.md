@@ -69,7 +69,56 @@ elasticsearch.username:
 elasticsearch.password: 
 ```  
 # CentOS 安装 logstash 8.1.2  
+
+docker 安装/启动
 ```
 docker pull docker.elastic.co/logstash/logstash:8.1.2
 docker run -d --name=logstash --net elastic -p 172.19.28.74:4560:4560 docker.elastic.co/logstash/logstash:8.1.2
+```
+修改config/logstash.yml文件  
+```
+http.host: "0.0.0.0"
+xpack.monitoring.elasticsearch.hosts: [ "http://172.19.28.74:9200" ]
+```
+修改pipeline/logstash.conf文件  
+```
+input {
+  tcp {
+    mode => "server"
+    host => "0.0.0.0"
+    port => "4560"
+    codec => json_lines
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => ["172.19.28.74:9200"]
+    user => ""
+    password => ""
+    index => "qsadmin-%{+YYYY.MM.dd}"
+  }
+  stdout {
+    codec => rubydebug
+  }
+}
+```
+
+**springboot将日志上传至logstash**  
+```
+<dependency>
+    <groupId>net.logstash.logback</groupId>
+    <artifactId>logstash-logback-encoder</artifactId>
+    <version>7.4</version>
+</dependency>
+```
+修改logback-spring.xml文件  
+```
+<appender name="logstash" class="net.logstash.logback.appender.LogstashAccessTcpSocketAppender">
+    <destination>172.19.28.74:4560</destination>
+    <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
+</appender>
+<logger name="com" level="ERROR">
+    <appender-ref ref="logstash" />
+</logger>
 ```
