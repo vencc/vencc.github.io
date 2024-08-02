@@ -11,6 +11,7 @@ docker run --name mqtt -p 18083:18083 -p 1883:1883 -p 8084:8084 -p 8883:8883 -p 
 1、关闭匿名认证(默认是开启的谁都能够登录)  
 ```
 docker exec -it mqtt /bin/sh
+vi /opt/emqttd/etc/emq.conf
 # 更改允许匿名 true -> false
 allow_anonymous = false 
 ```
