@@ -64,8 +64,8 @@ insert into mqtt_user (`username`, `password`) values ('','');
 5、修改mysql配置  
 ```
 auth.mysql.server = 172.19.28.74
-auth.mysql.username = 数据库账号
-auth.mysql.password = 数据库密码
+auth.mysql.username = 
+auth.mysql.password = 
 auth.mysql.database = mqtt
 auth.mysql.password_hash = sha256
 ```
