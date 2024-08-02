@@ -1,5 +1,5 @@
 [CentOS 安装 elasticsearch 和 kibana 和 logstash](https://vencc.github.io/docs/elasticsearch)  
-[CentOS 安装 mqtt](https://vencc.github.io/docs/mqt)  
+[CentOS 安装 mqtt](https://vencc.github.io/docs/mqtt)  
 [JDK ssl双向认证](https://vencc.github.io/docs/ssl)  
 [docker各项目地址](https://vencc.github.io/docs/docker)  
 [Jrebel热部署](https://vencc.github.io/docs/jrebel)  
