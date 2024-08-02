@@ -3,7 +3,7 @@
 docker 安装/启动  
 ```
 docker pull registry.cn-hangzhou.aliyuncs.com/synbop/emqttd:2.3.6
-docker run --name emq -p 18083:18083 -p 1883:1883 -p 8084:8084 -p 8883:8883 -p 8083:8083 -d registry.cn-hangzhou.aliyuncs.com/synbop/emqttd:2.3.6
+docker run --name mqtt -p 18083:18083 -p 1883:1883 -p 8084:8084 -p 8883:8883 -p 8083:8083 -d registry.cn-hangzhou.aliyuncs.com/synbop/emqttd:2.3.6
 ```
 
 配置mqtt  
@@ -11,7 +11,7 @@ docker run --name emq -p 18083:18083 -p 1883:1883 -p 8084:8084 -p 8883:8883 -p 8
 1、关闭匿名认证(默认是开启的谁都能够登录)  
 ```
 docker exec -it mqtt /bin/sh
-# 更改允许匿名 True -> false
+# 更改允许匿名 true -> false
 allow_anonymous = false 
 ```
 
